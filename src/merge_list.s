@@ -5,7 +5,7 @@
 merge :
         ands r2 , r0 , r1 @ list a || list b == NULL? => r2 
         beq null @ eq -> Z == 1 ?
-        
+        @bla bla
 
 
 
