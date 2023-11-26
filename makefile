@@ -9,9 +9,12 @@ NEG_SRC:= negative.s
 FACT:=rec_fact.s fact.s main_fact.s
 
 
-EXECS:=array merge
+EXECS:=printl
 
 all:$(EXECS)
+
+printl: main_print.c printl.s
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 merge: main_merge_list.c merge_list.s
 	$(CC) $(CPPFLAGS) $^ -o $@
