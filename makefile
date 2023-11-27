@@ -13,7 +13,7 @@ EXECS:= searchlist sum_list printl merge zeros array hello my_sum foo negative m
 
 all:$(EXECS)
 
-myatoi: main.c myatoi.s
+myatoi: main.c myatoi.s map.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 searchlist:main_searchl.c searchl.s

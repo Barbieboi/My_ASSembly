@@ -18,7 +18,6 @@ myatoi :
         push {r1} @ riempio lo stack con i miei valori
         add r2 , r2 , #1
         b loop
-
     stack_read : @ho lo stack con i valori in ordine dalle unità in poi 
         mov r0 , #0
         mov r1 , #1 @ potenza di dieci corrente
