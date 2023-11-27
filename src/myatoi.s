@@ -3,7 +3,7 @@
     .type myatoi , %function
 
 myatoi :
-        push {r4 , r5}
+        push { r4, r5 }
         mov r3 , #0 @r3 = risultato
         mov r2 , #0 @ r2 = counter
     loop :
@@ -38,6 +38,12 @@ myatoi :
 
     error :
         mov r0 , #0
-        sub r0 , r0 , #1
-        pop {r4 , r5}
+    clean : @devo "pulire" lo stack , ho letto r2 valori
+        cmp r0 , r2 
+        beq end_error
+        pop {r1}
+        add r0 , r0 , #1 
+    end_error :
+        mov r0 , #0xffffffff
+        pop {r4,  r5}
         mov pc , lr
