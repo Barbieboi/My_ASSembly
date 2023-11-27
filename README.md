@@ -1,4 +1,4 @@
-# my_asssembly
+# My_ASSembly
 assembly_code AeSO 23/24
 built on **WSL2 Ubuntu 22.04.3**
 packages nedeed:
