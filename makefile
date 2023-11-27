@@ -2,11 +2,6 @@ CC=arm-linux-gnueabihf-gcc
 CPPFLAGS = -static -ggdb3
 
 VPATH:= ./src
-#source code
-SUM_SRC:= main_sum.c pippo.s sum.s
-FOO_SRC:= foo.c foo.s
-NEG_SRC:= negative.s
-FACT:=rec_fact.s fact.s main_fact.s
 
 
 EXECS:= searchlist sum_list printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
@@ -37,16 +32,16 @@ array: main_sum_array_v2.s sum_arr.s
 hello: helloworld.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-my_sum:$(SUM_SRC)
+my_sum:main_sum.c pippo.s sum.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-foo:$(FOO_SRC)
+foo:foo.c foo.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 negative:negative.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-my_fact:$(FACT)
+my_fact:rec_fact.s fact.s main_fact.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 killme: kill_me.s
