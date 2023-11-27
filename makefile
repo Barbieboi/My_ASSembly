@@ -9,9 +9,16 @@ NEG_SRC:= negative.s
 FACT:=rec_fact.s fact.s main_fact.s
 
 
-EXECS:=printl
+EXECS:=searchlist
 
 all:$(EXECS)
+
+
+searchlist:main_searchl.c searchl.s
+	$(CC) $(CPPFLAGS) $^ -o $@
+
+sum_list:main_sum_list.c sum_list.s
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 printl: main_print.c printl.s
 	$(CC) $(CPPFLAGS) $^ -o $@
