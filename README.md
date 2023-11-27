@@ -10,7 +10,7 @@ Use provided Makefile calling ***make*** on your shell
 Or compile with ***-static*** flag and run with ***qemu-arm exec***
 
 (I.E.)
-~$ arm-linux-gnueabihf-gcc -o hello helloworld.s -static
+~$ arm-linux-gnueabihf-gcc -o hello helloworld.s -static\n
 ~$ qemu-arm hello
 
 
