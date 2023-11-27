@@ -1,9 +1,9 @@
 # My_ASSembly
 assembly_code AeSO 23/24
-built on **WSL2 Ubuntu 22.04.3**
-packages nedeed:
-  `gcc-arm-linux-gnueabihf`  
-  `qemu`  
+built on **WSL2 Ubuntu 22.04.3**  
+- packages needed:  
+  - `gcc-arm-linux-gnueabihf`  
+  - `qemu`  
 
 Use provided Makefile calling `~$ make` on your shell  
 
