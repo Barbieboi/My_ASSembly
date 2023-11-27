@@ -9,10 +9,12 @@ NEG_SRC:= negative.s
 FACT:=rec_fact.s fact.s main_fact.s
 
 
-EXECS:= searchlist sum_list printl merge zeros array hello my_sum foo negative my_fact kill_me
+EXECS:= searchlist sum_list printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
 
 all:$(EXECS)
 
+myatoi: main.c myatoi.s
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 searchlist:main_searchl.c searchl.s
 	$(CC) $(CPPFLAGS) $^ -o $@
