@@ -6,10 +6,14 @@ VPATH:= ./src
 .PHONY: purge clean
 
 EXECS:= maplist  headins printl searchlist merge \
-zeros array  negative mul_array myatoi reverse\
+zeros array  negative mul_array myatoi reverse trasforma \
 hello my_sum foo  my_fact kill_me \
 
-all:$(EXECS) clean
+all:$(EXECS) 
+
+
+trasforma: test.c cambia.s trasforma.s 
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 reverse: main_reverse.c reverse.s
 	$(CC) $(CPPFLAGS) $^ -o $@
