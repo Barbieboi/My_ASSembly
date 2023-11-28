@@ -14,6 +14,7 @@ void print_list(node_t* list){
     printf("]\n");
 }
 
+
 node_t* create_list(int n){
     node_t *list = NULL;
     node_t *prec = NULL;
@@ -23,7 +24,7 @@ node_t* create_list(int n){
             printf("Errore malloc\n");
             exit(1);
         }
-        elem->value = i;
+        elem->value = rand()%250;
         if (prec != NULL) {
             prec->next = elem;
             prec = elem;

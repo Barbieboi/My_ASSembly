@@ -3,11 +3,14 @@ CPPFLAGS = -static -ggdb3
 
 VPATH:= ./src
 
+.PHONY: purge clean
 
-EXECS:= headins  mul_array  searchlist  printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
+EXECS:= maplist  headins  mul_array  searchlist  printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
 
-all:$(EXECS)
+all:$(EXECS) clean
 
+maplist: main_maplist.c maplist.s mylist.o
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 headins: main_headins.c headins.s mylist.o
 	$(CC) $(CPPFLAGS) $^ -o $@
@@ -55,6 +58,8 @@ mylist.o:mylist.c mylist.h
 	$(CC) $(CPPFLAGS) -c $< 
 
 
-clean:
+purge:
 	rm -f $(EXECS)
+	rm -f *.o
+clean:
 	rm -f *.o
