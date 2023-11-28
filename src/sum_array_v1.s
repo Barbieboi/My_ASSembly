@@ -7,10 +7,10 @@
 main :
         push {lr}
         ldr r0 , =len 
-        ldr r3 , [r0] @r3 = lunghezza arr
+        ldr r3 , [r0]   @ r3 = lunghezza arr
         ldr r0 , =arr
         mov r2 , #0 
-        mov r1 , #0 @r1 = sum 
+        mov r1 , #0     @ r1 = sum 
     for :    
         cmp r2 , r3
         beq end

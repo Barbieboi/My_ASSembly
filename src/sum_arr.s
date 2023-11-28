@@ -4,9 +4,9 @@
 
 sum_arr :
         push {r4}
-        mov r4 , r1 @ r4 = length
-        mov r2 , #0 @ r2 = res
-        mov  r3 , #0 @ r3 = index
+        mov r4 , r1     @ r4 = length
+        mov r2 , #0     @ r2 = res
+        mov  r3 , #0    @ r3 = index
     loop :
         cmp r3 , r4 
         beq end

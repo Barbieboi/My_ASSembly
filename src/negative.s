@@ -3,14 +3,14 @@
 .global main
 .type main , %function
 
-@controllare quanti numeri negativi ci sono in arr
+@ controllare quanti numeri negativi ci sono in arr
 
 main:
     push {lr}
     ldr r0, =arr
-    mov r1 , #14 @ length 
-    mov r2 , #0 @ res
-    mov r3 , #0 @ indice i
+    mov r1 , #14    @ length 
+    mov r2 , #0     @ res
+    mov r3 , #0     @ indice i
 loop:
     cmp r1 ,r3
     beq end

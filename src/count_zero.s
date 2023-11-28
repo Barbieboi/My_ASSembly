@@ -3,7 +3,7 @@
 .global main
 .type main , %function
 
-main :@ conta quanti 0 vengono forniti da riga di comando
+main :              @ conta quanti 0 vengono forniti da riga di comando
         push {lr}
         cmp r0 , #2
         blt error
