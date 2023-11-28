@@ -17,5 +17,7 @@ int main(int argc, char *argv[]){
 
     print_list(list);
 
+    freelist(list) ;
+
     return 0;
 }

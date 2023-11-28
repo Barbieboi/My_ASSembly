@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
     map_list(list, &foo);
     print_list(list);
 
+    freelist(list);
     return 0;
 }
 

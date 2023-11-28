@@ -12,3 +12,6 @@ void print_list(node_t* list);
 
 //Crea una lista di n interi randomici
 node_t* create_list(int n);
+
+//Free di una lista (Mi urtavano i memory leak)
+void freelist(node_t* list);

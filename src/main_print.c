@@ -10,6 +10,6 @@ int main(int argc, char *argv[]){
     node_t *list = create_list(10);
 
     printl(list);
-
+    freelist(list);
     return 0;
 }

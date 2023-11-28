@@ -51,7 +51,7 @@ negative:negative.s
 my_fact:rec_fact.s fact.s main_fact.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-killme: kill_me.s
+kill_me: kill_me.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 mylist.o:mylist.c mylist.h

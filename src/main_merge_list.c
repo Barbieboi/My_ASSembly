@@ -21,5 +21,7 @@ int main()
     node_t *result_list = merge(prima_list, seconda_list);
     print_list(result_list);
     // stampo la lista unita
+    free(result_list);
+
     return 0;
 }

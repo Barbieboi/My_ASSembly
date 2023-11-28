@@ -38,3 +38,13 @@ node_t* create_list(int n){
     return list ;
 
 }
+
+
+void freelist(node_t* list){
+    node_t* tmp ;
+    while(list != NULL){
+        tmp = list ;
+        list = list->next ;
+        free(tmp);
+    }
+}

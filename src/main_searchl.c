@@ -18,5 +18,6 @@ int main(int argc, char *argv[]){
         puts("Found it!");
     }
 
+    freelist(list);
     return 0;
 }
