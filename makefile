@@ -4,9 +4,13 @@ CPPFLAGS = -static -ggdb3
 VPATH:= ./src
 
 
-EXECS:= mul_array searchlist sum_list printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
+EXECS:= headins  mul_array  searchlist sum_list printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
 
 all:$(EXECS)
+
+
+headins: main_headins.c headins.s 
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 mul_array: main_mul_array.c mul_array.s
 	$(CC) $(CPPFLAGS) $^ -o $@
