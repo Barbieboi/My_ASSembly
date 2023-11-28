@@ -2,20 +2,22 @@
 #include <stdio.h>  
 #include <stdlib.h> 
 
-struct nodo
-{
-    int value;
-    struct nodo *next;
-};
+#include"mylist.h"
 
-typedef struct nodo node_t;
+void print_list(node_t* list){
+    node_t* t = list ;
+    printf("[ ");
+    while (t != NULL) {
+        printf("%d ", t->value);
+        t = t->next;
+    }
+    printf("]\n");
+}
 
-extern int sum_list(node_t* list);
-
-int main(int argc, char *argv[]){
+node_t* create_list(int n){
     node_t *list = NULL;
     node_t *prec = NULL;
-    for (int i = 0; i<4; i++) {
+    for (int i = 0; i<n; i++) {
         node_t *elem = (node_t *) malloc(sizeof(node_t));
         if (elem == NULL) {
             printf("Errore malloc\n");
@@ -32,8 +34,6 @@ int main(int argc, char *argv[]){
         }
         elem->next = NULL;
     }
+    return list ;
 
-    int sum = sum_list(list);
-
-    return 0;
 }

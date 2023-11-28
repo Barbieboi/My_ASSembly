@@ -4,12 +4,12 @@ CPPFLAGS = -static -ggdb3
 VPATH:= ./src
 
 
-EXECS:= headins  mul_array  searchlist sum_list printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
+EXECS:= headins  mul_array  searchlist  printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
 
 all:$(EXECS)
 
 
-headins: main_headins.c headins.s 
+headins: main_headins.c headins.s mylist.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 mul_array: main_mul_array.c mul_array.s
@@ -18,16 +18,13 @@ mul_array: main_mul_array.c mul_array.s
 myatoi: main.c myatoi.s map.s map_ho.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-searchlist:main_searchl.c searchl.s
+searchlist:main_searchl.c searchl.s mylist.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-sum_list:main_sum_list.c sum_list.s
+printl: main_print.c printl.s mylist.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-printl: main_print.c printl.s
-	$(CC) $(CPPFLAGS) $^ -o $@
-
-merge: main_merge_list.c merge_list.s
+merge: main_merge_list.c merge_list.s mylist.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 zeros: count_zero.s
@@ -54,6 +51,10 @@ my_fact:rec_fact.s fact.s main_fact.s
 killme: kill_me.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
+mylist.o:mylist.c mylist.h
+	$(CC) $(CPPFLAGS) -c $< 
+
 
 clean:
 	rm -f $(EXECS)
+	rm -f *.o

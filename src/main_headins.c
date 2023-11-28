@@ -1,24 +1,9 @@
 #define _GNU_SOURCE 
 #include <stdio.h>  
-#include <stdlib.h> 
+#include <stdlib.h>
 
-struct nodo
-{
-    int value;
-    struct nodo *next;
-};
+#include "mylist.h"
 
-typedef struct nodo node_t;
-
-void print_list(node_t* list){
-    node_t* t = list ;
-    printf("[ ");
-    while (t != NULL) {
-        printf("%d ", t->value);
-        t = t->next;
-    }
-    printf("]\n");
-}
 
 //Inserimento iun testa
 extern node_t* headins(node_t* list, int val);
