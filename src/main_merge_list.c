@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 
-#include"mylist.h"
+#include"mylib.h"
 
 extern node_t* merge(node_t* a,node_t* b);
 

@@ -2,12 +2,8 @@
 #include <stdio.h>  
 #include <stdlib.h> 
 
-void print_array(int *arr , int len){
-    for(int i = 0 ; i < len ; i++){
-        printf("%d ", arr[i]);
-    }
-    puts("");
-}
+#include"mylib.h"
+
 extern void mul_array(int *arr, int len, int k);
 
 int main(int argc, char *argv[]){

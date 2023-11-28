@@ -2,7 +2,7 @@
 #include <stdio.h>  
 #include <stdlib.h> 
 
-#include"mylist.h"
+#include"mylib.h"
 
 extern void printl(node_t* list);
 

@@ -5,29 +5,34 @@ VPATH:= ./src
 
 .PHONY: purge clean
 
-EXECS:= maplist  headins  mul_array  searchlist  printl merge zeros array hello my_sum foo negative my_fact kill_me myatoi
+EXECS:= maplist  headins printl searchlist merge \
+zeros array  negative mul_array myatoi reverse\
+hello my_sum foo  my_fact kill_me \
 
 all:$(EXECS) clean
 
-maplist: main_maplist.c maplist.s mylist.o
+reverse: main_reverse.c reverse.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-headins: main_headins.c headins.s mylist.o
+maplist: main_maplist.c maplist.s mylib.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-mul_array: main_mul_array.c mul_array.s
+headins: main_headins.c headins.s mylib.o
+	$(CC) $(CPPFLAGS) $^ -o $@
+
+mul_array: main_mul_array.c mul_array.s mylib.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 myatoi: main.c myatoi.s map.s map_ho.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-searchlist:main_searchl.c searchl.s mylist.o
+searchlist:main_searchl.c searchl.s mylib.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-printl: main_print.c printl.s mylist.o
+printl: main_print.c printl.s mylib.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-merge: main_merge_list.c merge_list.s mylist.o
+merge: main_merge_list.c merge_list.s mylib.o
 	$(CC) $(CPPFLAGS) $^ -o $@
 
 zeros: count_zero.s
@@ -54,7 +59,7 @@ my_fact:rec_fact.s fact.s main_fact.s
 kill_me: kill_me.s
 	$(CC) $(CPPFLAGS) $^ -o $@
 
-mylist.o:mylist.c mylist.h
+mylib.o:mylib.c mylib.h
 	$(CC) $(CPPFLAGS) -c $< 
 
 

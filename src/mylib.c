@@ -2,7 +2,7 @@
 #include <stdio.h>  
 #include <stdlib.h> 
 
-#include"mylist.h"
+#include"mylib.h"
 
 void print_list(node_t* list){
     node_t* t = list ;
@@ -14,6 +14,12 @@ void print_list(node_t* list){
     printf("]\n");
 }
 
+void print_array(int *arr , int len){
+    for(int i = 0 ; i < len ; i++){
+        printf("%d ", arr[i]);
+    }
+    puts("");
+}
 
 node_t* create_list(int n){
     node_t *list = NULL;
@@ -38,7 +44,6 @@ node_t* create_list(int n){
     return list ;
 
 }
-
 
 void freelist(node_t* list){
     node_t* tmp ;
