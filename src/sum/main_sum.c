@@ -12,7 +12,7 @@ int main(int argc, char *argv[]){
     int a = atoi(argv[1]) ;
 	int b = atoi(argv[2]) ;
 
-    printf("sum(%d ,%d) = %d\npippo = %d\n" , a , b , sum(a,b) , pippo(a , b )) ;    
+    printf("sum(%d ,%d) = %d\n" , a , b , sum(a,b) ) ;    
 
     return 0;
 }

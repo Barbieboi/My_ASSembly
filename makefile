@@ -1,76 +1,97 @@
 CC=arm-linux-gnueabihf-gcc
-CPPFLAGS = -static -ggdb3
+ARMFLAGS = -static -ggdb3
+LDLIBS=-lm
 
-VPATH:= ./src
+ifndef VERBOSE
+.SILENT:
+endif
 
-.PHONY: purge clean
+.PHONY: all purge
 
-EXECS:= maplist  headins printl searchlist merge principale\
-zeros array  negative mul_array myatoi reverse trasforma \
-hello my_sum foo  my_fact kill_me \
+DIR:=./src/%
 
-all:$(EXECS) 
+EXECS:= count_zero  headins     mergeList 	printList   sum \
+		fact    	killme   mul_array   negative    reverse     sum_array \
+		foo     	maplist    	myatoi_map  principale  searchList  trasforma \
 
-main:main_principale.c principale.s somma.s 
-	$(CC) $(CPPFLAGS) $^ -o $@
+all : $(EXECS)
 
-trasforma: test.c cambia.s trasforma.s 
-	$(CC) $(CPPFLAGS) $^ -o $@
+#conta quanti zeri vengono dati come argomento 
+count_zero:%: $(DIR)/count_zero.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-reverse: main_reverse.c reverse.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#calcola il fact di un numero passato come argomento
+fact: %: $(DIR)/fact.s $(DIR)/main_fact.s $(DIR)/rec_fact.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-maplist: main_maplist.c maplist.s mylib.o
-	$(CC) $(CPPFLAGS) $^ -o $@
+#funzione casuale test
+foo: %: $(DIR)/foo.c $(DIR)/foo.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-headins: main_headins.c headins.s mylib.o
-	$(CC) $(CPPFLAGS) $^ -o $@
+#head insertion su una lista di interi
+headins: %: $(DIR)/main_headins.c $(DIR)/headins.s mylib.o
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-mul_array: main_mul_array.c mul_array.s mylib.o
-	$(CC) $(CPPFLAGS) $^ -o $@
+#map su una lista di interi
+maplist: %: $(DIR)/main_maplist.c $(DIR)/maplist.s mylib.o
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-myatoi: main.c myatoi.s map.s map_ho.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#merge di due liste 
+mergeList: %: $(DIR)/main_merge_list.c $(DIR)/merge_list.s mylib.o
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-searchlist:main_searchl.c searchl.s mylib.o
-	$(CC) $(CPPFLAGS) $^ -o $@
+#moltiplica tutti gli interi in un array per un intero
+mul_array: %: $(DIR)/main_mul_array.c $(DIR)/mul_array.s mylib.o
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-printl: main_print.c printl.s mylib.o
-	$(CC) $(CPPFLAGS) $^ -o $@
+#Implementazione della funzione di libreria atoi e di una map su array di stringhe che la utilizza
+myatoi_map: %: $(DIR)/main_map.c $(DIR)/map.s $(DIR)/myatoi.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-merge: main_merge_list.c merge_list.s mylib.o
-	$(CC) $(CPPFLAGS) $^ -o $@
+#controlla qunati numeri negativi ci sono in un array dentro .data
+negative:  %: $(DIR)/negative.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-zeros: count_zero.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#Seconda prova in itinere 23/25
+principale: %: $(DIR)/main_principale.c $(DIR)/principale.s $(DIR)/somma.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-array: main_sum_array_v2.s sum_arr.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#stampa il contetnuto di una lista di interi
+printList: %: $(DIR)/main_printl.c $(DIR)/printl.s mylib.o
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-hello: helloworld.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#inverte una stringa
+reverse: %: $(DIR)/main_reverse.c $(DIR)/reverse.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-my_sum:main_sum.c pippo.s sum.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#cerca un elemento in una lista di interi
+searchList: %: $(DIR)/main_searchl.c $(DIR)/searchl.s mylib.o
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-foo:foo.c foo.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#somma due interi passati come argomento
+sum: %: $(DIR)/main_sum.c $(DIR)/sum.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-negative:negative.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#somma le coponenti di una array e stampa il risultato
+sum_array: %: $(DIR)/main_sum_array_v2.s $(DIR)/sum_arr.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-my_fact:rec_fact.s fact.s main_fact.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#prova in itinere anno BOH
+trasforma: %: $(DIR)/main_trasforma.c $(DIR)/trasforma.s $(DIR)/cambia.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-kill_me: kill_me.s
-	$(CC) $(CPPFLAGS) $^ -o $@
+#Stampa "Uccidimi" sul terminale 
+killme: ./src/kill_me.s
+	$(CC) $^ -o $@ $(ARMFLAGS)
 
-mylib.o:mylib.c mylib.h
-	$(CC) $(CPPFLAGS) -c $< 
+#libreria con utilty varie
+mylib.o: ./src/mylib/mylib.c ./src/mylib/mylib.h
+	$(CC) $< -c $@ 
 
-
-purge:
-	rm -f $(EXECS)
-	rm -f *.o
 clean:
 	rm -f *.o
+
+purge :
+	rm -f *.o
+	rm -f $(EXECS)
+

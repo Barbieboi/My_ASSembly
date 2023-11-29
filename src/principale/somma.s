@@ -2,7 +2,8 @@
             .global somma
             .type somma, %function @ r0 <- puntatore stringa
                                    @ r0 <- risultato
-     somma :        
+     
+    somma :        
         mov r3 , #0
     loop :
         ldrb r1 ,[r0]

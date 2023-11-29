@@ -2,7 +2,7 @@
 #include <stdio.h>  
 #include <stdlib.h> 
 
-#include"mylib.h"
+#include"../mylib/mylib.h"
 
 extern void mul_array(int *arr, int len, int k);
 

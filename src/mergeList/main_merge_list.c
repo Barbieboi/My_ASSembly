@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 
-#include"mylib.h"
+#include"../mylib/mylib.h"
 
 extern node_t* merge(node_t* a,node_t* b);
 

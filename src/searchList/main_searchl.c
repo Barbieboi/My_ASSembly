@@ -3,7 +3,7 @@
 #include <stdlib.h> 
 
 
-#include"mylib.h"
+#include"../mylib/mylib.h"
 
 extern int searchl(node_t* list, int k);
 
