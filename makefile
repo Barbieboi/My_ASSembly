@@ -5,12 +5,14 @@ VPATH:= ./src
 
 .PHONY: purge clean
 
-EXECS:= maplist  headins printl searchlist merge \
+EXECS:= maplist  headins printl searchlist merge principale\
 zeros array  negative mul_array myatoi reverse trasforma \
 hello my_sum foo  my_fact kill_me \
 
 all:$(EXECS) 
 
+main:main_principale.c principale.s somma.s 
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 trasforma: test.c cambia.s trasforma.s 
 	$(CC) $(CPPFLAGS) $^ -o $@
