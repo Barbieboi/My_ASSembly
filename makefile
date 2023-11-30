@@ -48,7 +48,7 @@ mul_array: %: $(DIR)/main_mul_array.c $(DIR)/mul_array.s mylib.o
 myatoi_map: %: $(DIR)/main_map.c $(DIR)/map.s $(DIR)/myatoi.s
 	$(CC) $^ -o $@ $(ARMFLAGS)
 
-#controlla qunati numeri negativi ci sono in un array dentro .data
+#controlla quanti numeri negativi ci sono in un array dentro .data
 negative:  %: $(DIR)/negative.s
 	$(CC) $^ -o $@ $(ARMFLAGS)
 
@@ -56,7 +56,7 @@ negative:  %: $(DIR)/negative.s
 principale: %: $(DIR)/main_principale.c $(DIR)/principale.s $(DIR)/somma.s
 	$(CC) $^ -o $@ $(ARMFLAGS)
 
-#stampa il contetnuto di una lista di interi
+#stampa il contenuto di una lista di interi
 printList: %: $(DIR)/main_printl.c $(DIR)/printl.s mylib.o
 	$(CC) $^ -o $@ $(ARMFLAGS)
 
