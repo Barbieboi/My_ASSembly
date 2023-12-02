@@ -86,7 +86,7 @@ killme: ./src/kill_me.s
 
 #libreria con utilty varie
 mylib.o: ./src/mylib/mylib.c ./src/mylib/mylib.h
-	$(CC) $< -c $@ 
+	$(CC) $< -c  
 
 clean:
 	rm -f *.o
